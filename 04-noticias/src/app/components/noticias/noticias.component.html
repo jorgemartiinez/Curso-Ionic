@@ -1,0 +1,12 @@
+<!-- Default Refresher -->
+
+<ion-grid fixed>
+
+  <ion-row>
+    <ion-col *ngFor="let noticia of noticias; let i = index;" size="12" sizeLg="3" sizeMd="4" sizeSm="6" sizeXs="12">
+
+      <app-noticia [noticia]="noticia" [enFavoritos]="enFavoritos" [index]="i"></app-noticia>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>

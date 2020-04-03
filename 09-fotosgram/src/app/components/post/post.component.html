@@ -1,0 +1,38 @@
+<div class="post">
+  <ion-item line-none>
+      <ion-avatar slot="start">
+          <img src="/assets/avatars/{{post.usuario.avatar}}">
+      </ion-avatar>
+      <ion-label>
+          <h3>{{ post.usuario.nombre }}</h3>
+          <h3>{{ post.usuario.email }}</h3>
+        </ion-label>
+  </ion-item>
+
+  <!-- ngIf si existen las imgs -->
+  <ion-slides pager="true" *ngIf="post.imgs.length > 1">
+    <ion-slide *ngFor="let img of post.imgs" class="image-slide"
+                [style]=" (img | imagen: post.usuario._id) | domSanitizer">  <!-- Pasamos primero el pipe imagen con dos argumentos y depues el doomSanitizer-->
+    </ion-slide>
+  </ion-slides>
+
+  <ion-slides *ngIf="post.imgs.length == 1" [options]="slideSoloOpts"> <!-- SI solo hay una imagen la mostramos sin el pager-->
+    <ion-slide class="image-slide"
+                [style]="(post.imgs[0] | imagen: post.usuario._id) | domSanitizer">
+    </ion-slide>
+  </ion-slides>
+
+  <!--mapa-->
+  <app-mapa [coords]="post.coords" *ngIf="post.coords"></app-mapa>
+
+  <ion-item lines="none">
+      <ion-icon slot="start" name="heart-empty"></ion-icon>
+      <ion-icon slot="end" name="bookmark"></ion-icon>
+  </ion-item>
+
+  <ion-item lines="none">
+      <ion-label text-wrap>
+        {{ post.mensaje }}
+    </ion-label>
+  </ion-item>
+</div>

@@ -1,0 +1,2 @@
+"use strict";
+/* SE CREA PARA QUE LO TRANSPILE A LA CARPETA DIST */ 
